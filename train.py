@@ -63,7 +63,7 @@ hp = Hyperparameters(
 ##############################################
 
 # Root Path for Google Drive
-root_path = "/content/drive/MyDrive/All_Datasets/summer2winter_yosemite"
+root_path = "D:/horse2zebra"
 
 # Root Path for Kaggle
 # root_path = '../input/summer2winter-yosemite'
