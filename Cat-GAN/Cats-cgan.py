@@ -19,7 +19,7 @@ def set_all_seeds(seed):
 
 def set_deterministic():
     if torch.cuda.is_available():
-        torch.backends.cudnn.benchmark = False
+        torch.backends.cudnn.benchmark = True #bei gleichbleibender Inputsize nutzt cuda den besten algorhytmus für die vorhandene Hardware
         torch.backends.cudnn.deterministic = True
     torch.set_deterministic(True)
 
@@ -94,7 +94,7 @@ RANDOM_SEED = 42
 GENERATOR_LEARNING_RATE = 0.0002
 DISCRIMINATOR_LEARNING_RATE = 0.0002
 
-NUM_EPOCHS = 5
+NUM_EPOCHS = 200
 BATCH_SIZE = 128
 
 IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_CHANNELS = 64, 64, 3
@@ -104,7 +104,7 @@ IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_CHANNELS = 64, 64, 3
 ### MODEL
 ##########################
 
-class DCGAN(torch.nn.Module):
+class CATGAN(torch.nn.Module):
 
     def __init__(self, latent_dim=100,
                  num_feat_maps_gen=64, num_feat_maps_dis=64,
@@ -224,17 +224,19 @@ train_loader = DataLoader(dataset=train_dataset,
                           batch_size=BATCH_SIZE,
                           num_workers=0,
                           shuffle=True)
-
-validation_dataset = datasets.ImageFolder(root="D:/cats",
+test_dataset = datasets.ImageFolder(root="D:/cats/",
+                               transform=custom_transforms)
+test_loader = DataLoader(dataset=test_dataset,
+                          batch_size=BATCH_SIZE,
+                          num_workers=0,
+                          shuffle=True)
+validation_dataset = datasets.ImageFolder(root="D:/cats/",
                                transform=custom_transforms)
 valid_loader = DataLoader(dataset=validation_dataset,
                           batch_size=BATCH_SIZE,
                           num_workers=0,
                           shuffle=True)
-test_loader = DataLoader(dataset=validation_dataset,
-                          batch_size=BATCH_SIZE,
-                          num_workers=0,
-                          shuffle=True)
+
 
 # Checking the dataset
 print('Training Set:\n')
@@ -272,22 +274,22 @@ plt.show()
 
 set_all_seeds(RANDOM_SEED)
 
-model = DCGAN()
-model.to(DEVICE)
+#model = CATGAN()
+#model.to(DEVICE)
 
 
-optim_gen = torch.optim.Adam(model.generator.parameters(),
+optim_generat = torch.optim.Adam(model.generator.parameters(),
                              betas=(0.5, 0.999),
                              lr=GENERATOR_LEARNING_RATE)
 
-optim_discr = torch.optim.Adam(model.discriminator.parameters(),
+optim_discrim = torch.optim.Adam(model.discriminator.parameters(),
                                betas=(0.5, 0.999),
                                lr=DISCRIMINATOR_LEARNING_RATE)
 
 
 log_dict = train_catgan(num_epochs=NUM_EPOCHS, model=model,
-                        optimizer_gen=optim_gen,
-                       optimizer_discr=optim_discr,
+                        optimizer_generator=optim_generat,
+                       optimizer_discriminator=optim_discrim,
                         latent_dim=100,
                         device=DEVICE,
                         train_loader=train_loader,
