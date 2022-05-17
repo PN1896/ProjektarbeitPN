@@ -1,6 +1,16 @@
 # python-template Aus dem Kurs!
 
+Im Ordner CAT-GAn befindet sich das cGAN (Cat-GAN/Cats-cgan.py /)
+Ebenso das Script um die Bilder in ihre RGB Bestndteile zu zerlegen (Cat-GAN/pictureloadertest.py /)
+
+Im Hauptordner befinden sich die skripte für das "vanilla" GAN (vanilla-CAT-GAN.py | vanilla-CAT-GAN-HiddenL.py
+
+
+
+
 ## Visual Studio Code
+
+
 
 This repository is optimized for [Visual Studio Code](https://code.visualstudio.com/) which is a great code editor for many languages like Python and Javascript. The [introduction videos](https://code.visualstudio.com/docs/getstarted/introvideos) explain how to work with VS Code. The [Python tutorial](https://code.visualstudio.com/docs/python/python-tutorial) provides an introduction about common topics like code editing, linting, debugging and testing in Python. There is also a [Data Science](https://code.visualstudio.com/docs/datascience/overview) section showing how to work with Jupyter Notebooks and common Machine Learning libraries.
 
