@@ -1,3 +1,3 @@
-import numoy
+import numpy
 
 print("hello world")
