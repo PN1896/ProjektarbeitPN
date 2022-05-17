@@ -1,6 +1,6 @@
 # python-template Aus dem Kurs!
 
-Im Ordner CAT-GAn befindet sich das cGAN (Cat-GAN/Cats-cgan.py /)
+Im Ordner CAT-cGAN befindet sich das cGAN (Cat-cGAN/Cats-cgan.py /)
 Ebenso das Script um die Bilder in ihre RGB Bestndteile zu zerlegen (Cat-GAN/pictureloadertest.py /)
 
 Im Hauptordner befinden sich die skripte für das "vanilla" GAN (vanilla-CAT-GAN.py | vanilla-CAT-GAN-HiddenL.py
