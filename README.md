@@ -1,4 +1,4 @@
-# python-template
+# python-template Aus dem Kurs!
 
 ## Visual Studio Code
 
